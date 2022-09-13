@@ -17,6 +17,7 @@
         "@typescript-eslint"
     ],
     "rules": {
+      "no-unused-vars": [2, {"args": "all", "argsIgnorePattern": "^_"}],
       "import/extensions": [
         "error",
         "ignorePackages",
