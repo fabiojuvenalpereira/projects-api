@@ -1,7 +1,11 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
+import { RequestError } from '../interfaces/requestError.interface';
 
-export default function errorMiddleware(err: any, _req: Request, res:Response) {
-  if (err.status) return res.status(err.status).json({ message: err.message });
+const errorMiddleware = (err: RequestError, _req: Request, res: Response, _next: NextFunction) => {
+  const status = err.status || 500;
+  const message = err.message || 'Internal Server Error';
 
-  return res.status(500).json({ message: 'Internal Server Error' });
-}
+  return res.status(status).json(message);
+};
+
+export default errorMiddleware;
