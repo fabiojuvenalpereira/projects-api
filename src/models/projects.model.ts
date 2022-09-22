@@ -1,3 +1,4 @@
+import { ObjectId } from 'mongodb';
 import connection from './connection';
 
 export async function insertProjectOnDataBase(test: any) {
@@ -12,24 +13,24 @@ export async function listProjectsFromDataBase() {
   return foundProjects;
 }
 
-export async function findProjectOnDataBase(projectId: any) {
+export async function findProjectOnDataBase(projectId: ObjectId) {
   const conn = await connection();
   const foundProjects = await conn.findOne({ _id: projectId });
   return foundProjects;
 }
 
-export async function updateProjectOnDataBase(projectID:any, content: any) {
+export async function updateProjectOnDataBase(projectId:ObjectId, data: any) {
   const conn = await connection();
   const foundProjects = await conn.updateOne(
-    { _id: projectID },
-    { $set: { ...content } },
+    { _id: projectId },
+    { $set: { ...data } },
   );
   return foundProjects;
 }
 
-export async function deleteProjectOnDataBase(projectID:any) {
+export async function deleteProjectOnDataBase(projectId:ObjectId) {
   const conn = await connection();
-  const foundProjects = await conn.deleteOne({ _id: projectID });
+  const foundProjects = await conn.deleteOne({ _id: projectId });
   return foundProjects;
 }
 
