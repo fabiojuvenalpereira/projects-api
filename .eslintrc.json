@@ -5,7 +5,8 @@
     },
     "extends": [
         "airbnb-base",
-        "airbnb-typescript/base"
+        "airbnb-typescript/base",
+        "plugin:@typescript-eslint/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -17,7 +18,7 @@
         "@typescript-eslint"
     ],
     "rules": {
-      "no-unused-vars": [2, {"args": "all", "argsIgnorePattern": "^_"}],
+      "no-unused-vars": [4, {"args": "all", "argsIgnorePattern": "^_"}],
       "import/extensions": [
         "error",
         "ignorePackages",
