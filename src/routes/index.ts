@@ -1,16 +1,16 @@
 import { Router } from 'express';
-import insertProject from '../controllers/projects.cotroller';
+import * as projectsController from '../controllers/projects.cotroller';
 
 const router = Router();
 
-router.post('/', insertProject);
+router.post('/', projectsController.insertProject);
 
-router.get('/', insertProject);
-router.get('/:id', insertProject);
+router.get('/', projectsController.listProjects);
+router.get('/:id', projectsController.findProject);
 
-router.put('/', insertProject);
+router.put('/:id', projectsController.updateProject);
 
-router.delete('/', insertProject);
-router.delete('/:id', insertProject);
+router.delete('/', projectsController.deleleAllProjects);
+router.delete('/:id', projectsController.deleteProject);
 
 export default router;
