@@ -1,7 +1,7 @@
 import { ErrorInterface } from "../interfaces/error.interface";
 
-const lauchError = (status: number, message: string): ErrorInterface => {
+const NewError = (status: number, message: string): ErrorInterface => {
   return {status, message};
 }
 
-export default lauchError;
+export default NewError;
