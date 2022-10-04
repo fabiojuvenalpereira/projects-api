@@ -36,29 +36,9 @@ export async function findProject(req: Request, res: Response, next: NextFunctio
 }
 
 export async function updateProject(req: Request, res: Response, next: NextFunction) {
-console.log("teste");
-
-
-try {
+  try {
     const { id } = req.params;
-    const {
-      title,
-      abstractContent,
-      content,
-      images,
-      linkGitHub,
-      linkProject,
-      skills,
-    } = req.body;
-    const data = {
-      title,
-      abstractContent,
-      content,
-      images,
-      linkGitHub,
-      linkProject,
-      skills,
-    };
+    const data = req.body;
 
     const foundProject = await projectsService.updateProject(id, data);
 
