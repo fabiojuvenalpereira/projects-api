@@ -21,10 +21,12 @@ export async function findProjectOnDataBase(projectId: ObjectId) {
 
 export async function updateProjectOnDataBase(projectId:ObjectId, data: any) {
   const conn = await connection();
+
   const foundProjects = await conn.updateOne(
     { _id: projectId },
     { $set: { ...data } },
   );
+
   return foundProjects;
 }
 
