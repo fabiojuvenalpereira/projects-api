@@ -1,7 +1,10 @@
-import { ErrorInterface } from "../interfaces/error.interface";
+class GenetateError extends Error {
+  code: number;
 
-const NewError = (status: number, message: string): ErrorInterface => {
-  return {status, message};
+  constructor(code: number, message: string) {
+    super(message);
+    this.code = code;
+  }
 }
 
-export default NewError;
+export default GenetateError;
