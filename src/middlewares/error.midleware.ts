@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { RequestError } from '../interfaces/requestError.interface';
-import STATUS from '../utils/httpStatusCode';
+import STATUS from '../fixtures/httpStatusCode';
 
 const errorMiddleware = (err: RequestError, _req: Request, res: Response, _next: NextFunction) => {
   const status = err.status || STATUS.INTERNALERROR;
