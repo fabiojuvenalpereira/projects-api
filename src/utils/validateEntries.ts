@@ -1,8 +1,8 @@
 import Joi from 'joi';
 
-import { ProjectInterface } from '../interfaces/project.interface';
+import { ProjectUpdateInterface } from '../interfaces/projectUpdate.interface';
 import GenetateError from './errorGenerate';
-import STATUS from './httpStatusCode';
+import STATUS from '../fixtures/httpStatusCode';
 
 const SCHEMA = Joi.object({
   title: Joi.string(),
@@ -14,8 +14,9 @@ const SCHEMA = Joi.object({
   skills: Joi.array().items(Joi.string()),
 });
 
-const validateEntries = (data: ProjectInterface) => {
+const validateEntries = (data: ProjectUpdateInterface) => {
   const validation = SCHEMA.validate({ ...data });
+
   if (validation.error) {
     throw new GenetateError(STATUS.BADREQUEST, validation.error.message);
   }
