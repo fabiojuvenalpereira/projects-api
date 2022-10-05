@@ -7,7 +7,7 @@ enum STATUS {
   FORBIDEN = 403,
   NOTFOUND,
   INTERNALERROR = 500,
-  BADGATWAY = 502
+  BADGATWAY = 502,
 }
 
-export default STATUS
+export default STATUS;
