@@ -1,9 +1,9 @@
 class GenetateError extends Error {
-  code: number;
+  status: number;
 
-  constructor(code: number, message: string) {
+  constructor(status: number, message: string) {
     super(message);
-    this.code = code;
+    this.status = status;
   }
 }
 
