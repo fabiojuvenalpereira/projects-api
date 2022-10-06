@@ -1,6 +1,4 @@
-// import generateToken from '../auth/token';
 import { ProjectInterface } from '../interfaces/project.interface';
-import { ProjectUpdateInterface } from '../interfaces/projectUpdate.interface';
 import * as projectsModel from '../models/projects.model';
 import GenetateError from '../utils/errorGenerate';
 import STATUS from '../fixtures/httpStatusCode';
@@ -33,13 +31,13 @@ export async function findProject(id: string) {
   throw new GenetateError(STATUS.NOTFOUND, 'Project not found in the database');
 }
 
-export async function updateProject(id:string, data:ProjectUpdateInterface) {
+export async function updateProject(id:string, data:ProjectInterface) {
   const projectId = ObjectIdValidate(id);
 
   const foundProject = await projectsModel.findProjectOnDataBase(projectId);
   if (!foundProject) throw new GenetateError(STATUS.BADREQUEST, 'Could not found project');
 
-  validateEntries(data);
+  validateEntries(data, true);
 
   const updatedProject = await projectsModel.updateProjectOnDataBase(projectId, data);
   if (updatedProject.matchedCount === 0) throw new GenetateError(STATUS.BADREQUEST, 'Could not update project');
