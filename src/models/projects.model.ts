@@ -1,8 +1,8 @@
 import { ObjectId } from 'mongodb';
-import { ProjectUpdateInterface } from '../interfaces/projectUpdate.interface';
+import { ProjectInterface } from '../interfaces/project.interface';
 import connection from './connection';
 
-export async function insertProjectOnDataBase(test: any) {
+export async function insertProjectOnDataBase(test: ProjectInterface) {
   const conn = await connection();
   const insertedObject = await conn.insertOne(test);
   return insertedObject;
@@ -20,7 +20,7 @@ export async function findProjectOnDataBase(projectId: ObjectId) {
   return foundProjects;
 }
 
-export async function findProjectBylink(link: any) {
+export async function findProjectBylink(link: ProjectInterface) {
   const conn = await connection();
   const foundProjectByLink = await conn.findOne({
     $or: [
@@ -35,7 +35,7 @@ export async function findProjectBylink(link: any) {
   return foundProjectByLink;
 }
 
-export async function updateProjectOnDataBase(projectId:ObjectId, data: ProjectUpdateInterface) {
+export async function updateProjectOnDataBase(projectId:ObjectId, data: ProjectInterface) {
   const conn = await connection();
 
   const foundProjects = await conn.updateOne(
