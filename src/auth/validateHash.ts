@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import * as dotenv from 'dotenv';
 
 import objectHash from 'object-hash';
@@ -10,7 +10,7 @@ dotenv.config();
 
 const HASH = `${process.env.HASH}`;
 
-export default async function validateHash(req: Request, _res: Response, next: NextFunction) {
+export default function validateHash(req: Request, _res: Response, next: NextFunction) {
   try {
     const { authorization } = req.headers;
     const hashValidation = objectHash.MD5(String(authorization));
@@ -18,9 +18,10 @@ export default async function validateHash(req: Request, _res: Response, next: N
     if (!validateValues(hashValidation, HASH)) {
       throw new GenetateError(STATUS.UNAUTHORIZED, 'Acesso não autorizado!');
     }
-    next();
+
+    return next();
   } catch (error) {
     console.log(error);
-    next(error);
+    return next(error);
   }
 }
