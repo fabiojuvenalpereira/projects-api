@@ -1,6 +1,6 @@
 import { ObjectId } from 'mongodb';
 import { ProjectInterface } from '../interfaces/project.interface';
-import connection from './connection';
+import connection from '../database/connection';
 
 export async function insertProjectOnDataBase(test: ProjectInterface) {
   const conn = await connection();
