@@ -6,8 +6,8 @@ const router = Router();
 
 router.post('/', validateHash, projectsController.insertProject);
 
-router.get('/', validateHash, projectsController.listProjects);
-router.get('/:id', validateHash, projectsController.findProject);
+router.get('/', projectsController.listProjects);
+router.get('/:id', projectsController.findProject);
 
 router.put('/:id', validateHash, projectsController.updateProject);
 
